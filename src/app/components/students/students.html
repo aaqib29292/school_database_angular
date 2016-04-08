@@ -1,0 +1,25 @@
+<div class="container">
+
+
+  <div class="jumbotron text-center">
+    <h1>Welcome To CodeAstra</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6 col-md-3" ng-repeat="students in st.studentResponse.students">
+      <div class="thumbnail">
+        <div class="caption">
+          <a href=""><h3>{{ students.name }}</h3</a>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <div class="caption">
+          <span class="glyphicon glyphicon-plus-sign center-block" aria-hidden="true"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

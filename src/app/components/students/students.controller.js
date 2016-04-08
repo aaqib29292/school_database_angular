@@ -1,0 +1,23 @@
+(function() {
+  'use strict';
+
+  angular
+    .module('school')
+    .controller('StudentsController', StudentsController);
+
+  /** @ngInject */
+  function StudentsController($resource, $stateParams) {
+    var vm = this;
+
+    vm.getStudents = function() {
+      var classId = $stateParams.klass_id;
+      var sectionId = $stateParams.id;
+      console.log(classId);
+      console.log(sectionId);
+      var studentResource = $resource('http://localhost:3000/api/v1/klasses/'+classId+'/sections/'+sectionId+'/students');
+      vm.studentResponse = studentResource.get();
+      console.log(vm.studentResponse)
+    }();
+
+  }
+})();
