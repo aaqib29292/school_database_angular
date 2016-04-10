@@ -7,12 +7,19 @@
 
   <div class="row">
     <div class="col-sm-6 col-md-3" ng-repeat="classes in cc.classResponse.klasses">
-      <div class="thumbnail" ui-sref="sections({id: classes.id})">
-        <div class="caption">
-          <a href=""><h3>{{ classes.name }}</h3</a>
-
-          <!-- <p><a ng-href="{{awesomeThing.url}}">{{ awesomeThing.url }}</a></p> -->
+      <div class="thumbnail">
+        <a class="fa fa-pencil-square-o pull-right"></a>
+        <br>
+        <br>
+        <div class="caption text-center" ui-sref="sections({id: classes.id})">
+          <div>
+            <h3><a>{{ classes.name }}</a></h3>
+          </div>
         </div>
+        <br>
+        <br>
+        <br>
+        <a class="fa fa-trash-o pull-right"  ng-click="cc.deleteClass(classes)"></a>
       </div>
     </div>
     <div class="col-sm-6 col-md-3">

@@ -5,14 +5,21 @@
     .module('school')
     .controller('ClassesController', ClassesController);
 
-  /** @ngInject */
-  function ClassesController($timeout, webDevTec, toastr, $resource) {
-    var vm = this;
+      /** @ngInject */
+      function ClassesController($resource, $window, $uibModal) {
+        var vm = this;
+        var classResource = $resource('http://localhost:3000/api/v1/klasses/:classId');
 
-    vm.getClasses = function() {
-      var classResource = $resource('http://localhost:3000/api/v1/klasses');
+        vm.getClasses = function() {
+          vm.classResponse = classResource.get();
+          console.log(vm.classResponse);
+        }();
 
-      vm.classResponse = classResource.get();
-    }();
-  }
+        vm.deleteClass = function(classes) {
+          console.log("delete");
+          console.log(classes);
+          classResource.delete({classId:classes.id,name:classes.name});
+          $window.location.href = '/';
+        }
+      }
 })();
