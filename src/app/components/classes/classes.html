@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
 
 
   <div class="jumbotron text-center">
@@ -6,7 +6,7 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-6 col-md-3" ng-repeat="classes in cc.classResponse.klasses">
+    <div class="col-sm-6 col-md-3" ng-repeat="classes in cc.klassesList.klasses">
       <div class="thumbnail">
         <a class="fa fa-pencil-square-o pull-right" data-toggle="modal" data-target="#edit_class" ng-click="cc.editClass(classes)"></a>
         <br>
@@ -33,7 +33,6 @@
 </div>
 
 
-<!-- Modal -->
 <div class="modal fade" id="new_class" tabindex="-1" role="dialog" aria-labelledby="newClass">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -59,7 +58,7 @@
 </div>
 
 
-<!-- Modal -->
+
 <div class="modal fade" id="edit_class" tabindex="-1" role="dialog" aria-labelledby="editClass">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -73,6 +72,90 @@
               <label>Name</label>
               <input type="text" name="name" class="form-control" ng-model="name" placeholder="{{ classes.name}}">
               <span ng-show="errorName">{{errorName}}</span>
+          </div>
+          <button type="submit" class="btn btn-primary pull-right">Submit</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+
+<div class="container">
+
+  <div class="jumbotron text-center">
+    <h1>Welcome To CodeAstra</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6 col-md-3" ng-repeat="classes in cc.classResponse.klasses">
+      <div class="thumbnail">
+        <a class="fa fa-pencil-square-o pull-right" data-toggle="modal" data-target="#editClass" ng-click="cc.editClass(classes)"></a>
+        <br>
+        <br>
+        <div class="caption text-center" ui-sref="sections({id: classes.id})">
+          <div>
+            <h3><a>{{ classes.name }}</a></h3>
+          </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <a class="fa fa-trash-o pull-right"  ng-click="cc.deleteClass(classes)"></a>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+      <div class="thumbnail text-center" data-toggle="modal" data-target="#newClass">
+        <div class="caption">
+          <br><br>
+          <h1><span class="glyphicon glyphicon-plus-sign center-block" aria-hidden="true" ></span></h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+ <div class="modal fade" id="newClass" tabindex="-1" role="dialog" aria-labelledby="newClass">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add a new Class</h4>
+      </div>
+      <div class="modal-body">
+        <form name="classForm" ng-submit="cc.addClass(name)">
+          <div class="form-group">
+              <label>Name</label>
+              <input type="text" name="name" id="name" class="form-control" ng-model="name" placeholder="{{ classes.name}}">
+          </div>
+          <button type="submit" class="btn btn-primary pull-right">Submit</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="editClass" tabindex="-1" role="dialog" aria-labelledby="editClass">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Update Class</h4>
+      </div>
+      <div class="modal-body">
+        <form name="classForm" ng-submit="cc.updateClass(cc.classes,name)">
+          <div class="form-group">
+              <label>Name</label>
+              <input type="text" name="name" class="form-control" ng-model="cc.classes.name">
           </div>
           <button type="submit" class="btn btn-primary pull-right">Submit</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

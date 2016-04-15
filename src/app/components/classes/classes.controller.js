@@ -1,3 +1,43 @@
+// (function() {
+//   'use strict';
+//
+//   angular
+//     .module('school')
+//     .controller('ClassesController', ClassesController);
+//
+//       /** @ngInject */
+//       function ClassesController(classResource, $resource, $window) {
+//         var vm = this;
+//          vm.getAll = function () {
+//            console.log("");
+//            classResource.getClassesList()
+//              .success(function (data) {
+//                console.log(data);
+//                  vm.klassesList = data;
+//                })
+//              .error(function (data) {
+//                  $scope.error = "An Error has occured while Loading users! " + data.ExceptionMessage;
+//              });
+//          };
+//
+//         //
+//         // $scope.users = [];
+//         // $scope.user = null;
+//         // $scope.editMode = false;
+//         // $scope.getAll = function () {
+//         //    userFactory.getUsersList().success(function (data) {
+//         //    $scope.users = data;
+//         //    }).error(function (data) {
+//         //    $scope.error = "An Error has occured while Loading users! " + data.ExceptionMessage;
+//         //    });
+//         // };
+//         vm.getAll();
+//       };
+// })();
+//
+// console.log("bye");
+
+
 (function() {
   'use strict';
 
@@ -22,7 +62,14 @@
         }
 
         vm.editClass = function(classes) {
-          
+          console.log("Edit");
+          vm.classes = classes;
+        }
+
+        vm.updateClass = function(classes, name) {
+          $('#editClass').modal('hide');
+          console.log("Update");
+          classResource.update({classId: classes.id, name: name}, classes);
         }
 
         vm.deleteClass = function(classes) {
