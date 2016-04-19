@@ -6,10 +6,10 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-6 col-md-3" ng-repeat="students in st.studentResponse.students">
+    <div class="col-sm-6 col-md-3" ng-repeat="students in st.studentResponse.students" >
 
       <div class="thumbnail">
-        <a class="fa fa-pencil-square-o pull-right"></a>
+        <a class="fa fa-pencil-square-o pull-right" ui-sref="studentDetails({klass_id: students.klass_id, section_id: students.section_id, id: students.id})"></a>
         <br>
         <div class="caption text-center" ui-sref="studentDetails({klass_id: students.klass_id, section_id: students.section_id, id: students.id})">
             <a>
@@ -21,15 +21,93 @@
             <a>
         </div>
         <br>
-        <a class="fa fa-trash-o pull-right"></a>
+        <a class="fa fa-trash-o pull-right" ui-sref="studentDetails({klass_id: students.klass_id, section_id: students.section_id, id: students.id})"></a>
       </div>
     </div>
     <div class="col-sm-6 col-md-3">
-      <div class="thumbnail">
+      <div class="thumbnail text-center" data-toggle="modal" data-target="#newStudent">
         <div class="caption">
-          <span class="glyphicon glyphicon-plus-sign center-block" aria-hidden="true"></span>
+          <br><br>
+          <h1><span class="glyphicon glyphicon-plus-sign center-block" aria-hidden="true" ></span></h1>
         </div>
       </div>
     </div>
   </div>
+</div>
+
+
+<div class="modal fade" id="newStudent" tabindex="-1" role="dialog" aria-labelledby="newStudent">
+ <div class="modal-dialog" role="document">
+   <div class="modal-content">
+     <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+       <h4 class="modal-title" id="myModalLabel">Add a new Student</h4>
+     </div>
+     <div class="modal-body">
+       <form class="form-horizontal" role="form" ng-submit="st.addStudent(name, rollnumber, fathername, gender, email, phone, dob, address, house)">
+          <div class="form-group">
+            <label for="rollnumber" class="col-sm-3 control-label">Roll Number</label>
+            <div class="col-sm-8">
+              <input type="text" ng-model="rollnumber" class="form-control" id="rollnumber"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="house" class="col-sm-3 control-label">House</label>
+            <div class="col-sm-8">
+              <input type="text" ng-model="house" class="form-control" id="house"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="name" class="col-sm-3 control-label">Name</label>
+            <div class="col-sm-8">
+              <input type="text" ng-model="name" class="form-control" id="name"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="fathername" class="col-sm-3 control-label">Father's Name</label>
+            <div class="col-sm-8">
+              <input type="text" ng-model="fathername" class="form-control" id="fathername"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="gender" class="col-sm-3 control-label">Gender</label>
+            <div class="col-sm-8">
+              <input type="text" ng-model="gender" class="form-control" id="gender"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email" class="col-sm-3 control-label">Email Id</label>
+            <div class="col-sm-8">
+              <input type="text" ng-model="email" class="form-control" id="email"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="dob" class="col-sm-3 control-label">Date of Birth</label>
+            <div class="col-sm-8">
+              <input type="date" ng-model="dob" class="form-control" id="dob"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="phone" class="col-sm-3 control-label">Phone Number</label>
+            <div class="col-sm-8">
+              <input type="text" ng-model="phone" class="form-control" id="phone"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="address" class="col-sm-3 control-label">Address</label>
+            <div class="col-sm-8">
+              <input type="text" ng-model="address" class="form-control" id="address"/>
+            </div>
+          </div>
+          <br>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-8">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+              <input type="submit" class="btn btn-primary" value="Save"/>
+            </div>
+          </div>
+        </form>
+     </div>
+   </div>
+ </div>
 </div>
