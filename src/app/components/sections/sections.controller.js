@@ -6,8 +6,14 @@
     .controller('SectionsController', SectionsController);
 
   /** @ngInject */
-  function SectionsController(sectionResource, $resource, $stateParams, $window) {
+  function SectionsController($resource, $stateParams, $window) {
     var vm = this;
+
+    var classId = $stateParams.id;
+
+    // var sectionResource = $resource('http://localhost:3000/api/v1/klasses/:classId/sections/:sectionId/?access_token=TLVMLZCHEBSBAVTQJDV5LVTB7E8S74Q4', {classId: classId}, { 'update': {method: "PUT"}});
+
+    var sectionResource = $resource('https://school-db-rails.herokuapp.com/api/v1/klasses/:classId/sections/:sectionId', {classId: classId}, { 'update': {method: "PUT"}});
 
     vm.getSections = function() {
       vm.sectionResponse = sectionResource.get();

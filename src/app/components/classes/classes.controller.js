@@ -1,43 +1,3 @@
-// (function() {
-//   'use strict';
-//
-//   angular
-//     .module('school')
-//     .controller('ClassesController', ClassesController);
-//
-//       /** @ngInject */
-//       function ClassesController(classResource, $resource, $window) {
-//         var vm = this;
-//          vm.getAll = function () {
-//            console.log("");
-//            classResource.getClassesList()
-//              .success(function (data) {
-//                console.log(data);
-//                  vm.klassesList = data;
-//                })
-//              .error(function (data) {
-//                  $scope.error = "An Error has occured while Loading users! " + data.ExceptionMessage;
-//              });
-//          };
-//
-//         //
-//         // $scope.users = [];
-//         // $scope.user = null;
-//         // $scope.editMode = false;
-//         // $scope.getAll = function () {
-//         //    userFactory.getUsersList().success(function (data) {
-//         //    $scope.users = data;
-//         //    }).error(function (data) {
-//         //    $scope.error = "An Error has occured while Loading users! " + data.ExceptionMessage;
-//         //    });
-//         // };
-//         vm.getAll();
-//       };
-// })();
-//
-// console.log("bye");
-
-
 (function() {
   'use strict';
 
@@ -46,9 +6,12 @@
     .controller('ClassesController', ClassesController);
 
       /** @ngInject */
-      function ClassesController($resource, classResource, $window) {
+      function ClassesController($resource, $window) {
         var vm = this;
-        // var classResource = $resource('http://localhost:3000/api/v1/klasses/:classId');
+        // var classResource = $resource('http://localhost:3000/api/v1/klasses/:classId?access_token=TLVMLZCHEBSBAVTQJDV5LVTB7E8S74Q4');
+
+        var classResource = $resource('https://school-db-rails.herokuapp.com/api/v1/klasses/:classId');
+
 
         vm.getClasses = function() {
           vm.classResponse = classResource.get();

@@ -6,13 +6,24 @@
     .controller('StudentDetailsController', StudentDetailsController);
 
   /** @ngInject */
-  function StudentDetailsController(studentDetailsResource, $resource, $stateParams, $window) {
+  function StudentDetailsController( $resource, $stateParams, $window) {
     var vm = this;
+
+    var classId = $stateParams.klass_id;
+    var sectionId = $stateParams.section_id;
+    var studentId = $stateParams.id;
+
+    // var studentDetailsResource = $resource('http://localhost:3000/api/v1/klasses/:classId/sections/:sectionId/students/:studentId?access_token=TLVMLZCHEBSBAVTQJDV5LVTB7E8S74Q4',{classId:  classId, sectionId: sectionId, studentId: studentId}, { 'update': {method: "PUT"}});
+
+    var studentDetailsResource = $resource('https://school-db-rails.herokuapp.com/api/v1/klasses/:classId/sections/:sectionId/students/:studentId', {classId:  classId, sectionId: sectionId, studentId: studentId}, { 'update': {method: "PUT"}});
+
+
 
     vm.getStudents = function() {
       vm.studentResponse = studentDetailsResource.get();
       console.log(vm.studentResponse);
     }();
+
     vm.editStudent = function(student) {
       console.log("Edit");
       vm.student = student;
@@ -30,10 +41,10 @@
       console.log("delete");
       console.log(student);
       if (del == true)
-      {
-        studentDetailsResource.delete({name: student.name});
-        $window.location.href = '/';
-      }
+        {
+          studentDetailsResource.delete({name: student.name});
+          $window.location.href = '/';
+        }
     }
 
   }
