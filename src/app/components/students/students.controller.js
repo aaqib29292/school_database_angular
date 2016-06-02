@@ -12,6 +12,17 @@
     var classId = $stateParams.klass_id;
     var sectionId = $stateParams.id;
 
+    vm.classname = classId
+    vm.sectionname = sectionId
+
+    vm.pastback = function() {
+      window.history.go(-2);
+    };
+
+    vm.back = function() {
+      window.history.go(-1);
+    };
+
     // var studentResource = $resource('http://localhost:3000/api/v1/klasses/:classId/sections/:sectionId/students/:studentId?access_token=TLVMLZCHEBSBAVTQJDV5LVTB7E8S74Q4',{classId:  classId, sectionId: sectionId}, { 'update': {method: "PUT"}});
 
     var studentResource = $resource('https://school-db-rails.herokuapp.com/api/v1/klasses/:classId/sections/:sectionId/students/:studentId',{classId:  classId, sectionId: sectionId}, { 'update': {method: "PUT"}});

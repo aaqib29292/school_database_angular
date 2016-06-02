@@ -1,19 +1,22 @@
 <div class="container">
 
+    <h2 style="text-align:center;">
+      <ol class="breadcrumb">
+        <li><a ng-click="sc.back()">Class-{{sc.classname}}</a></li>
+        <li class="active">Sections</li>
+      </ol>
+    </h2>
 
-  <div class="jumbotron text-center">
-    <h1>Welcome To CodeAstra</h1>
-  </div>
 
-  <div class="row">
-    <div class="col-sm-6 col-md-3" ng-repeat="sections in sc.sectionResponse.sections">
+  <div class="row" style="margin:20vh auto;">
+    <div class="col-sm-6 col-md-3" data-toggle="tooltip" data-placement="top" title="Click for Students in the Section" ng-repeat="sections in sc.sectionResponse.sections">
       <div class="thumbnail">
         <a class="fa fa-pencil-square-o pull-right" data-toggle="modal" data-target="#editSection" ng-click="sc.editSection(sections)"></a>
         <br>
         <br>
         <div class="caption text-center" ui-sref="students({klass_id: sections.klass_id, id: sections.id})">
           <div>
-            <h3><a>{{ sections.name }}</a></h3>
+            <h3><a>Section-{{ sections.name }}</a></h3>
           </div>
         </div>
         <br>

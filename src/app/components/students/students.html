@@ -1,12 +1,15 @@
 <div class="container">
 
-
-  <div class="jumbotron text-center">
-    <h1>Welcome To CodeAstra</h1>
-  </div>
+    <h2 style="text-align:center;">
+      <ol class="breadcrumb">
+        <li><a ng-click="st.pastback()">Class-{{st.classname}}</a></li>
+        <li><a ng-click="st.back()">Section-{{st.sectionname}}</a></li>
+        <li class="active">Students</li>
+      </ol>
+    </h2>
 
   <div class="row">
-    <div class="col-sm-6 col-md-3" ng-repeat="students in st.studentResponse.students" >
+    <div class="col-sm-6 col-md-3" data-toggle="tooltip" data-placement="top" title="Click for Student Details" ng-repeat="students in st.studentResponse.students | orderBy:'roll_number'">
 
       <div class="thumbnail">
         <a class="fa fa-pencil-square-o pull-right" ui-sref="studentDetails({klass_id: students.klass_id, section_id: students.section_id, id: students.id})"></a>

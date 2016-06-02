@@ -6,7 +6,7 @@
     .controller('ClassesController', ClassesController);
 
       /** @ngInject */
-      function ClassesController($resource, $window) {
+      function ClassesController($resource, $window, $state) {
         var vm = this;
         // var classResource = $resource('http://localhost:3000/api/v1/klasses/:classId?access_token=TLVMLZCHEBSBAVTQJDV5LVTB7E8S74Q4');
 
@@ -21,7 +21,8 @@
         vm.addClass = function(classname) {
           console.log(classname);
           classResource.save({name:classname});
-          $window.location.href = '/';
+          // $window.location.href = '/';
+          $state.go('classes');
         }
 
         vm.editClass = function(classes) {
@@ -39,7 +40,7 @@
           console.log("delete");
           console.log(classes);
           classResource.delete({classId:classes.id,name:classes.name});
-          $window.location.href = '/';
+          $state.go('/');
         }
       }
 })();
