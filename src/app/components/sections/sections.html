@@ -10,13 +10,13 @@
 
   <div class="row" style="margin:20vh auto;">
     <div class="col-sm-6 col-md-3" data-toggle="tooltip" data-placement="top" title="Click for Students in the Section" ng-repeat="sections in sc.sectionResponse.sections">
-      <div class="thumbnail">
+      <div class="thumbnail" ui-sref="students({klass_id: sections.klass_id, id: sections.id})">
         <a class="fa fa-pencil-square-o pull-right" data-toggle="modal" data-target="#editSection" ng-click="sc.editSection(sections)"></a>
         <br>
         <br>
-        <div class="caption text-center" ui-sref="students({klass_id: sections.klass_id, id: sections.id})">
+        <div class="caption text-center">
           <div>
-            <h3><a>Section-{{ sections.name }}</a></h3>
+            <h3>Section-{{ sections.name }}</h3>
           </div>
         </div>
         <br>
@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="col-sm-6 col-md-3">
-      <div class="thumbnail text-center" data-toggle="modal" data-target="#newSection">
+      <div class="thumbnail text-center" data-toggle="modal" data-target="#newSection" data-toggle="tooltip" data-placement="top" title="Click to add a Section">
         <div class="caption">
           <br><br>
           <h1><span class="glyphicon glyphicon-plus-sign center-block" aria-hidden="true" ></span></h1>

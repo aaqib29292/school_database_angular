@@ -8,13 +8,13 @@
 
   <div class="row">
     <div class="col-sm-6 col-md-3" data-toggle="tooltip" data-placement="top" title="Click for Sections in the Class" ng-repeat="classes in cc.classResponse.klasses">
-      <div class="thumbnail">
+      <div class="thumbnail" ui-sref="sections({id: classes.id})">
         <a class="fa fa-pencil-square-o pull-right" data-toggle="modal" data-target="#editClass" ng-click="cc.editClass(classes)"></a>
         <br>
         <br>
-        <div class="caption text-center" ui-sref="sections({id: classes.id})">
+        <div class="caption text-center">
           <div>
-            <h3><a>Class-{{ classes.name }}</a></h3>
+            <h3>Class-{{ classes.name }}</h3>
           </div>
         </div>
         <br>
@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="col-sm-6 col-md-3">
-      <div class="thumbnail text-center" data-toggle="modal" data-target="#newClass">
+      <div class="thumbnail text-center" data-toggle="modal" data-target="#newClass" data-toggle="tooltip" data-placement="top" title="Click to add a Class">
         <div class="caption">
           <br><br>
           <h1><span class="glyphicon glyphicon-plus-sign center-block" aria-hidden="true" ></span></h1>

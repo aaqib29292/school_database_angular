@@ -11,24 +11,22 @@
   <div class="row">
     <div class="col-sm-6 col-md-3" data-toggle="tooltip" data-placement="top" title="Click for Student Details" ng-repeat="students in st.studentResponse.students | orderBy:'roll_number'">
 
-      <div class="thumbnail">
+      <div class="thumbnail" ui-sref="studentDetails({klass_id: students.klass_id, section_id: students.section_id, id: students.id})">
         <a class="fa fa-pencil-square-o pull-right" ui-sref="studentDetails({klass_id: students.klass_id, section_id: students.section_id, id: students.id})"></a>
         <br>
-        <div class="caption text-center" ui-sref="studentDetails({klass_id: students.klass_id, section_id: students.section_id, id: students.id})">
-            <a>
+        <div class="caption text-center">
               <h3>{{ students.roll_number }}
                   <br>
                   <br>
                   {{ students.name }}
               </h3>
-            <a>
         </div>
         <br>
         <a class="fa fa-trash-o pull-right" ui-sref="studentDetails({klass_id: students.klass_id, section_id: students.section_id, id: students.id})"></a>
       </div>
     </div>
     <div class="col-sm-6 col-md-3">
-      <div class="thumbnail text-center" data-toggle="modal" data-target="#newStudent">
+      <div class="thumbnail text-center" data-toggle="modal" data-target="#newStudent" data-toggle="tooltip" data-placement="top" title="Click to add a Student">
         <div class="caption">
           <br><br>
           <h1><span class="glyphicon glyphicon-plus-sign center-block" aria-hidden="true" ></span></h1>
